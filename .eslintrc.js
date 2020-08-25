@@ -16,5 +16,6 @@ module.exports = {
     'class-methods-use-this': 0,
     'arrow-parens': 0,
     'import/first': 0,
+    'no-param-reassign': 0,
   },
 };

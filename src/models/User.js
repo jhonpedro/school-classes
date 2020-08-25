@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize'
+import bcrypt from 'bcryptjs'
 
 export default class User extends Model {
   static init(sequelize) {
@@ -43,6 +44,11 @@ export default class User extends Model {
       },
     }, {
       sequelize,
+    })
+
+    this.addHook('beforeSave', user => {
+      const salt = bcrypt.genSaltSync()
+      user.password_hash = bcrypt.hashSync(user.password, salt)
     })
     return this
   }
