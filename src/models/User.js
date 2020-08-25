@@ -24,12 +24,9 @@ export default class User extends Model {
           },
         },
       },
-      password_hash: {
+      password_hashed: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validate: {
-          notEmpty: true,
-        },
       },
       password: {
         type: Sequelize.VIRTUAL,
@@ -46,9 +43,9 @@ export default class User extends Model {
       sequelize,
     })
 
-    this.addHook('beforeSave', user => {
-      const salt = bcrypt.genSaltSync()
-      user.password_hash = bcrypt.hashSync(user.password, salt)
+    this.addHook('beforeSave', async user => {
+      const salt = await bcrypt.genSalt()
+      user.password_hashed = await bcrypt.hash(user.password, salt)
     })
     return this
   }
