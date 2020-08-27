@@ -44,8 +44,10 @@ export default class User extends Model {
     })
 
     this.addHook('beforeSave', async user => {
-      const salt = await bcrypt.genSalt()
-      user.password_hashed = await bcrypt.hash(user.password, salt)
+      if (user.password) {
+        const salt = await bcrypt.genSalt()
+        user.password_hashed = await bcrypt.hash(user.password, salt)
+      }
     })
     return this
   }
