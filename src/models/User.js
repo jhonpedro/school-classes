@@ -51,4 +51,9 @@ export default class User extends Model {
     })
     return this
   }
+
+  async passwordIsValid(password) {
+    const isPasswordValid = await bcrypt.compare(password, this.password_hashed)
+    return isPasswordValid
+  }
 }
