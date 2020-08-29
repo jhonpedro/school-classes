@@ -3,25 +3,33 @@ import User from '../models/User'
 
 class SessionController {
   async login(req, res) {
-    const { email, password } = req.body
+    const { email: reqEmail, password } = req.body
 
     try {
-      if (!email || !password) {
+      if (!reqEmail || !password) {
         return res.status(401).json({ error: 'missing params' })
       }
 
       const user = await User.findOne({
         where: {
-          email,
+          email: reqEmail,
         },
       })
 
-      const isPasswordValid = await user.passwordIsValid(password)
+      const isPasswordValid = user && (await user.passwordIsValid(password))
       if (!user || !isPasswordValid) {
         return res.status(400).json({ error: 'user with wrong credentials' })
       }
 
-      JWT.sign({ user_id: user.id },
+      const { id, name, email } = user
+
+      const payloadJWT = {
+        id,
+        name,
+        email,
+      }
+
+      JWT.sign(payloadJWT,
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES_IN },
         (error, token) => {
