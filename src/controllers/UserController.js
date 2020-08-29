@@ -37,7 +37,7 @@ class HomeController {
   }
 
   async show(req, res) {
-    const { id } = req.params
+    const { id } = req.user
 
     try {
       const user = await User.findByPk(id)
@@ -53,20 +53,15 @@ class HomeController {
     const {
       name, lastPassword, newPassword,
     } = req.body
-    const { id } = req.params
+    const { id } = req.user
 
     try {
-      if (!id) {
-        return res.status(401).json({ error: 'missing param' })
-      }
-
       const user = await User.findByPk(id)
-      if (!user) {
-        return res.status(401).json({ error: 'missing param' })
-      }
+
       const isLastPasswordValid = await bcrypt.compare(lastPassword, user.password_hashed)
+
       if (!isLastPasswordValid) {
-        return res.sendStatus(403)
+        return res.sendStatus(401)
       }
 
       let newUser
@@ -87,13 +82,9 @@ class HomeController {
   }
 
   async delete(req, res) {
-    const { id } = req.params
+    const { id } = req.user
 
     try {
-      if (!id) {
-        return res.status(401).json({ error: 'missing param' })
-      }
-
       const operationIsConcluded = await User.destroy({
         where: {
           id,
