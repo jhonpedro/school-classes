@@ -8,6 +8,7 @@ import express from 'express'
 import HomeRoute from './routes/home'
 import UserRoute from './routes/user'
 import SessionRoute from './routes/session'
+import StudentRoute from './routes/student'
 
 class App {
   constructor() {
@@ -25,6 +26,7 @@ class App {
     this.app.use(HomeRoute)
     this.app.use('/users', UserRoute)
     this.app.use('/session', SessionRoute)
+    this.app.use('/students', StudentRoute)
   }
 }
 
