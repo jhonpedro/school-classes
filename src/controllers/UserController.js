@@ -37,7 +37,7 @@ class HomeController {
   }
 
   async show(req, res) {
-    const { id } = req.user
+    const { id } = req.params
 
     try {
       const user = await User.findByPk(id)
