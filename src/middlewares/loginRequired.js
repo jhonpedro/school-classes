@@ -19,7 +19,6 @@ export default function MiddlewareLoginRequired(req, res, next) {
       email,
     }
 
-    console.log(id, name, email)
     next()
   } catch (error) {
     console.log(error)
