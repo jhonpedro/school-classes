@@ -19,6 +19,7 @@ class StudentsController {
         model: Photos,
         attributes: [
           'filename',
+          'link',
         ],
       },
     })
@@ -61,6 +62,7 @@ class StudentsController {
           model: Photos,
           attributes: [
             'filename',
+            'link',
           ],
         },
       })

@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize'
+import appConfig from '../config/app'
 
 export default class StudentsPhoto extends Model {
   static init(sequelize) {
@@ -28,6 +29,12 @@ export default class StudentsPhoto extends Model {
           isInt: {
             msg: 'age must be a integer number',
           },
+        },
+      },
+      link: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${appConfig.url}/images/${this.getDataValue('filename')}`
         },
       },
     }, {
