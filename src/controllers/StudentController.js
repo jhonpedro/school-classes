@@ -1,8 +1,27 @@
 import Student from '../models/Student'
+import Photos from '../models/Photo'
 
 class StudentsController {
   async index(req, res) {
-    const student = await Student.findAll()
+    const student = await Student.findAll({
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'last_name',
+        'age',
+      ],
+      order: [
+        ['created_at', 'DESC'],
+        [Photos, 'id', 'DESC'],
+      ],
+      include: {
+        model: Photos,
+        attributes: [
+          'filename',
+        ],
+      },
+    })
     res.json(student)
   }
 
@@ -37,7 +56,14 @@ class StudentsController {
         res.status(400).json({ error: 'missing params' })
       }
 
-      const student = await Student.findByPk(id)
+      const student = await Student.findByPk(id, {
+        include: {
+          model: Photos,
+          attributes: [
+            'filename',
+          ],
+        },
+      })
 
       return res.json(student)
     } catch (error) {
