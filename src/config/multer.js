@@ -16,7 +16,7 @@ export default {
       cb(null, resolve(__dirname, '..', '..', 'uploads'))
     },
     filename: (req, file, cb) => {
-      cb(null, `${Date.now()}_${randomNumber(1, 20000)}.${extname(file.originalname)}`)
+      cb(null, `${Date.now()}_${randomNumber(1, 20000)}${extname(file.originalname)}`)
     },
   }),
 }
