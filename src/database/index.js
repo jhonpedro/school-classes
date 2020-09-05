@@ -3,9 +3,10 @@ import databaseConfig from '../config/database'
 
 import Student from '../models/Student'
 import User from '../models/User'
-import Photo from '../models/Photo'
+import StudentPhoto from '../models/StudentPhoto'
+import UserPhoto from '../models/UserPhoto'
 
-const models = [Student, User, Photo]
+const models = [Student, User, UserPhoto, StudentPhoto]
 
 const connection = new Sequelize(databaseConfig)
 
