@@ -1,5 +1,5 @@
 import Student from '../models/Student'
-import Photos from '../models/Photo'
+import StudentPhoto from '../models/StudentPhoto'
 
 class StudentsController {
   async index(req, res) {
@@ -13,10 +13,10 @@ class StudentsController {
       ],
       order: [
         ['created_at', 'DESC'],
-        [Photos, 'id', 'DESC'],
+        [StudentPhoto, 'id', 'DESC'],
       ],
       include: {
-        model: Photos,
+        model: StudentPhoto,
         attributes: [
           'filename',
           'link',
@@ -58,8 +58,15 @@ class StudentsController {
       }
 
       const student = await Student.findByPk(id, {
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'last_name',
+          'age',
+        ],
         include: {
-          model: Photos,
+          model: StudentPhoto,
           attributes: [
             'filename',
             'link',
