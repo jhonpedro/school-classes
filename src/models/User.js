@@ -56,4 +56,8 @@ export default class User extends Model {
     const isPasswordValid = await bcrypt.compare(password, this.password_hashed)
     return isPasswordValid
   }
+
+  static associate(models) {
+    this.hasMany(models.Users_photo, { foreignKey: 'user_id' })
+  }
 }
