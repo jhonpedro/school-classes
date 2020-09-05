@@ -21,7 +21,9 @@ export default function MiddlewareLoginRequired(req, res, next) {
 
     next()
   } catch (error) {
-    console.log(error)
+    console.log(
+      `User from IP: ${req.ip} have a JWT Expired\nExpired at: ${error.expiredAt}`,
+    )
     return res.status(401).json({ error: error.message })
   }
 }
