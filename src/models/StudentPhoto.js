@@ -9,7 +9,7 @@ export default class StudentsPhoto extends Model {
         defaultValue: '',
         validate: {
           notEmpty: {
-            msg: 'cannot be null',
+            msg: 'originalname cannot be null',
           },
         },
       },
@@ -18,7 +18,7 @@ export default class StudentsPhoto extends Model {
         defaultValue: '',
         validate: {
           notEmpty: {
-            msg: 'cannot be null',
+            msg: 'filename cannot be null',
           },
         },
       },
@@ -27,7 +27,7 @@ export default class StudentsPhoto extends Model {
         defaultValue: '',
         validate: {
           isInt: {
-            msg: 'age must be a integer number',
+            msg: 'student_id must be a integer number',
           },
         },
       },
