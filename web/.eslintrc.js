@@ -1,7 +1,7 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
+		es2020: true,
 	},
 	extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
 	parser: 'babel-eslint',
@@ -20,5 +20,6 @@ module.exports = {
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
 		'react/jsx-filename-extension': 0,
+		'react/prop-types': 0
 	},
 }
