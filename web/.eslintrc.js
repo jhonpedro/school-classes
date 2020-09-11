@@ -20,6 +20,5 @@ module.exports = {
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
 		'react/jsx-filename-extension': 0,
-		'react/prop-types': 0
 	},
 }
