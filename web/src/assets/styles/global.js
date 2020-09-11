@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 export default createGlobalStyle`
 	:root {
@@ -32,5 +33,20 @@ export default createGlobalStyle`
 
 	a {
 		text-decoration: none;
+	}
+
+	.Toastify__toast {
+		font-family: Poppins;
+		font-size: 1.3rem;
+	}
+
+	.Toastify .Toastify__toast-container .Toastify__toast--success {
+		background-color: var(--color-toast-success);
+	}
+	.Toastify .Toastify__toast-container .Toastify__toast--error {
+		background-color: var(--color-toast-error);
+	}
+	.Toastify .Toastify__toast-container .Toastify__toast--warn {
+		background-color: var(--color-toast-warning);
 	}
 `
