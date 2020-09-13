@@ -15,7 +15,6 @@ function WrappedRoute({ children: Component, isPrivate, ...rest }) {
 			/>
 		)
 	}
-	console.log(Component)
 	return (
 		// eslint-disable-next-line react/jsx-props-no-spreading
 		<Route {...rest}>{Component}</Route>
@@ -27,7 +26,11 @@ WrappedRoute.defaultProps = {
 }
 
 WrappedRoute.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.func,
+		PropTypes.array,
+	]).isRequired,
 	isPrivate: PropTypes.bool,
 }
 
