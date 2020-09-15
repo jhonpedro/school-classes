@@ -7,7 +7,7 @@ const req = () =>
 	new Promise((res, rej) => {
 		setTimeout(() => {
 			res()
-		}, 5000)
+		}, 500)
 	})
 
 function* sample() {
