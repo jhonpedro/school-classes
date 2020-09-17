@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.nav`
 	background-color: var(--color-primary);
+	height: 10vh;
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -14,6 +15,7 @@ export const ContentSide = styled.div`
 	a {
 		display: flex;
 		justify-content: space-around;
+		height: 100%;
 	}
 
 	@media (min-width: 992px) {
