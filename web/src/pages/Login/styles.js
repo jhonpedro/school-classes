@@ -32,6 +32,7 @@ export const SideText = styled.div`
 
 export const LoginBox = styled.form`
 	height: 35%;
+	min-height: 27rem;
 	width: 100%;
 	margin-top: 2rem;
 
@@ -46,4 +47,11 @@ export const LoginBox = styled.form`
 	@media (min-width: 992px) {
 		width: 50%;
 	}
+`
+
+export const LoginBoxButtons = styled.div`
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
 `
