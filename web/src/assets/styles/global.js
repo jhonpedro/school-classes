@@ -35,6 +35,10 @@ export default createGlobalStyle`
 		text-decoration: none;
 	}
 
+	input {
+		font-family: Poppins;
+	}
+
 	.container {
 		width: 90vw;
 	}
