@@ -10,19 +10,22 @@ export const Container = styled.div`
 	position: relative;
 
 	p {
+		font-size: 1rem;
 		color: var(--color-primary);
 		position: absolute;
 		z-index: 1;
-		top: 1rem;
+		top: 0.3rem;
 		left: 1.5rem;
 		transition: 0.5s;
-		background-color: var(--color-light);
-		border-radius: 0.9rem;
+		border-top-left-radius: 0.9rem;
+		border-top-right-radius: 0.9rem;
 	}
 
 	:focus-within {
 		p {
+			background-color: var(--color-light);
 			padding: 0.1rem 1rem;
+			padding-bottom: 1.1rem;
 			top: -1.3rem;
 			left: 0;
 		}
