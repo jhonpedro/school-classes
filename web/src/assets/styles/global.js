@@ -7,12 +7,12 @@ export default createGlobalStyle`
 
 		--color-primary: #C3073F;
 		--color-primary-darker: #8a072e;
+		--color-light: #e8e9eb;
 		--color-dark: #343a40;
 		--color-toast-success: #0197F6;
 		--color-toast-error: #FF9122;
 		--color-toast-warning: #F2AF29;
 		--color-text-white: #f8f9fa;
-		--color-text-light: #e8e9eb;
 	}
 
 	 * {
@@ -33,6 +33,10 @@ export default createGlobalStyle`
 
 	a {
 		text-decoration: none;
+	}
+
+	.container {
+		width: 90vw;
 	}
 
 	.Toastify__toast {
