@@ -8,6 +8,7 @@ export const Button = styled.button`
 	transition: 0.2s;
 	border: 0;
 	border-radius: 0.7rem;
+	cursor: pointer;
 
 	:hover {
 		background-color: var(--color-light);
