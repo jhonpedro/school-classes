@@ -55,6 +55,7 @@ export const Redirect = styled.button`
 	background-color: var(--color-primary);
 	color: var(--color-text-white);
 	transition: background-color 0.2s;
+	cursor: pointer;
 
 	:hover {
 		background-color: var(--color-primary-darker);
