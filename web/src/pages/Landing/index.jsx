@@ -5,7 +5,7 @@ import history from '../../services/history'
 
 function Landing() {
 	function handleRedirectToLogin() {
-		history.push('/Login')
+		history.push('/singin')
 	}
 
 	return (

@@ -17,7 +17,7 @@ function Header({ showLogin, showLogout }) {
 
 			<ContentSide>
 				{showLogin && (
-					<Link to="/Login">
+					<Link to="/singin">
 						<LabeledIcon labelName="Entrar" component={<FaSignInAlt />} />
 					</Link>
 				)}

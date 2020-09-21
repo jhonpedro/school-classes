@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.main`
 	width: 100vw;
@@ -11,6 +11,18 @@ export const Container = styled.main`
 	color: var(--color-text-white);
 `
 
+const appearFromLeft = keyframes`
+	from {
+		opacity: 0;
+		transform: translateX(-10rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+`
+
 export const Content = styled.section`
 	width: 50%;
 	height: 50%;
@@ -18,6 +30,8 @@ export const Content = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
+
+	animation: ${appearFromLeft} 1s;
 
 	@media (min-width: 992px) {
 		width: 75%;
