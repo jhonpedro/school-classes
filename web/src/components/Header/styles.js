@@ -6,8 +6,6 @@ export const Container = styled.nav`
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
-
-	color: var(--color-text-white);
 `
 
 export const ContentSide = styled.div`
@@ -16,6 +14,12 @@ export const ContentSide = styled.div`
 		display: flex;
 		justify-content: space-around;
 		height: 100%;
+		color: var(--color-text-white);
+		transition: 0.2s;
+
+		:hover {
+			filter: brightness(85%);
+		}
 	}
 
 	@media (min-width: 992px) {
