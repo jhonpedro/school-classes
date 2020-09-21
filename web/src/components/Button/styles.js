@@ -6,12 +6,13 @@ export const Button = styled.button`
 	color: var(--color-light);
 	background: var(--color-primary-darker);
 	transition: 0.2s;
-	border: 1px solid var(--color-primary-darker);
+	border: 0;
 	border-radius: 0.7rem;
 
 	:hover {
 		background-color: var(--color-light);
 		border-color: var(--color-primary-darker);
 		color: var(--color-primary);
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 	}
 `

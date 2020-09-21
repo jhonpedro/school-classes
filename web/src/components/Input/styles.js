@@ -23,6 +23,7 @@ export const Container = styled.div`
 
 	:focus-within {
 		p {
+			font-size: 1.3rem;
 			background-color: var(--color-light);
 			padding: 0.1rem 1rem;
 			padding-bottom: 1.1rem;
