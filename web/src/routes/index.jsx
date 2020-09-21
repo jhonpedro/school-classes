@@ -2,7 +2,8 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 
 import Route from './Route'
-import Login from '../pages/Login'
+import SingIn from '../pages/SingIn'
+import SingUp from '../pages/SingUp'
 import Landing from '../pages/Landing'
 import Page404 from '../pages/Page404'
 
@@ -13,8 +14,12 @@ function Routes() {
 				<Landing />
 			</Route>
 
-			<Route path="/login">
-				<Login />
+			<Route path="/singin">
+				<SingIn />
+			</Route>
+
+			<Route path="/singup">
+				<SingUp />
 			</Route>
 
 			<Route path="*">
