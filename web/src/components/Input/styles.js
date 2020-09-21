@@ -38,6 +38,6 @@ export const Input = styled.input`
 	padding: 1.4rem;
 	border: none;
 	border-radius: 0.9rem;
-	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 1.1rem 0.2rem rgba(0, 0, 0, 0.1);
 	background-color: var(--color-light);
 `
