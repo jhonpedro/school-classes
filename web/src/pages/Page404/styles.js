@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.main`
 	width: 100vw;
-	height: 85vh;
+	height: 90vh;
 	padding: 0 2rem;
 
 	display: flex;
