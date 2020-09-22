@@ -55,31 +55,23 @@ function SingUpPage() {
 		history.push('singin')
 	}
 
-	function handleChange(event, keyToChange) {
-		switch (keyToChange) {
-			case 'name': {
-				setFormData({
-					...formData,
-					name: event.target.value,
-				})
-				break
-			}
-			case 'email': {
-				setFormData({
-					...formData,
-					email: event.target.value,
-				})
-				break
-			}
-			case 'password': {
-				setFormData({
-					...formData,
-					password: event.target.value,
-				})
-				break
-			}
-			default:
-		}
+	function handleChangeName(event) {
+		setFormData({
+			...formData,
+			name: event.target.value,
+		})
+	}
+	function handleChangeEmail(event) {
+		setFormData({
+			...formData,
+			email: event.target.value,
+		})
+	}
+	function handleChangePassword(event) {
+		setFormData({
+			...formData,
+			password: event.target.value,
+		})
 	}
 
 	return (
@@ -97,18 +89,18 @@ function SingUpPage() {
 						<Input
 							placeholder="Nome"
 							value={formData.name}
-							onChange={(event) => handleChange(event, 'name')}
+							onChange={handleChangeName}
 						/>
 						<Input
 							placeholder="E-mail"
 							value={formData.email}
-							onChange={(event) => handleChange(event, 'email')}
+							onChange={handleChangeEmail}
 						/>
 						<Input
 							placeholder="Senha"
 							type="password"
 							value={formData.password}
-							onChange={(event) => handleChange(event, 'password')}
+							onChange={handleChangePassword}
 						/>
 						<SingUpBoxButtons>
 							<Button type="button" onClick={handleSingIn}>
