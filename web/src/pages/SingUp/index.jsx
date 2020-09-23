@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import * as Yup from 'yup'
 import { toast } from 'react-toastify'
 import axios from '../../services/axios'
-
 import history from '../../services/history'
+
+import Loading from '../../components/Loading'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -22,9 +23,11 @@ function SingUpPage() {
 		password: '',
 		email: '',
 	})
+	const [isLoading, setIsLoading] = useState(false)
 
 	async function handleSubmit(event) {
 		try {
+			setIsLoading(true)
 			event.preventDefault()
 
 			const schema = Yup.object().shape({
@@ -41,8 +44,9 @@ function SingUpPage() {
 
 			await schema.validate(formData, { abortEarly: false })
 
-			axios.post('/users', formData)
+			await axios.post('/users', formData)
 
+			setIsLoading(false)
 			history.push('/singin')
 		} catch (error) {
 			if (error.errors) {
@@ -75,43 +79,42 @@ function SingUpPage() {
 	}
 
 	return (
-		<>
-			<SingUpContainer>
-				<Header showSingUp />
-				<SingUpContainerContent className="container">
-					<SideText>
-						Cadastrar <br />
-						<p className="downText">
-							Digite seus dados para nós criarmos uma conta para você
-						</p>
-					</SideText>
-					<SingUpBox onSubmit={handleSubmit}>
-						<Input
-							placeholder="Nome"
-							value={formData.name}
-							onChange={handleChangeName}
-						/>
-						<Input
-							placeholder="E-mail"
-							value={formData.email}
-							onChange={handleChangeEmail}
-						/>
-						<Input
-							placeholder="Senha"
-							type="password"
-							value={formData.password}
-							onChange={handleChangePassword}
-						/>
-						<SingUpBoxButtons>
-							<Button type="button" onClick={handleSingIn}>
-								Logar
-							</Button>
-							<Button type="submit">Cadastrar</Button>
-						</SingUpBoxButtons>
-					</SingUpBox>
-				</SingUpContainerContent>
-			</SingUpContainer>
-		</>
+		<SingUpContainer>
+			<Loading isLoadding={isLoading} />
+			<Header showSingUp />
+			<SingUpContainerContent className="container">
+				<SideText>
+					Cadastrar <br />
+					<p className="downText">
+						Digite seus dados para nós criarmos uma conta para você
+					</p>
+				</SideText>
+				<SingUpBox onSubmit={handleSubmit}>
+					<Input
+						placeholder="Nome"
+						value={formData.name}
+						onChange={handleChangeName}
+					/>
+					<Input
+						placeholder="E-mail"
+						value={formData.email}
+						onChange={handleChangeEmail}
+					/>
+					<Input
+						placeholder="Senha"
+						type="password"
+						value={formData.password}
+						onChange={handleChangePassword}
+					/>
+					<SingUpBoxButtons>
+						<Button type="button" onClick={handleSingIn}>
+							Logar
+						</Button>
+						<Button type="submit">Cadastrar</Button>
+					</SingUpBoxButtons>
+				</SingUpBox>
+			</SingUpContainerContent>
+		</SingUpContainer>
 	)
 }
 
