@@ -6,6 +6,7 @@ import SingIn from '../pages/SingIn'
 import SingUp from '../pages/SingUp'
 import Landing from '../pages/Landing'
 import Page404 from '../pages/Page404'
+import Students from '../pages/Students'
 
 function Routes() {
 	return (
@@ -20,6 +21,10 @@ function Routes() {
 
 			<Route path="/singup">
 				<SingUp />
+			</Route>
+
+			<Route path="/students" isPrivate>
+				<Students />
 			</Route>
 
 			<Route path="*">
