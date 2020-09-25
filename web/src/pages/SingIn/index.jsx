@@ -8,6 +8,7 @@ import history from '../../services/history'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 
 import * as actions from '../../store/modules/auth/actions'
 
@@ -21,7 +22,7 @@ import {
 
 function SingInPage(props) {
 	const dispatch = useDispatch()
-	const prevPath = get(props, 'location.state.prevPath', '/')
+	const prevPath = get(props, 'location.state.prevPath', '/students')
 	const [formData, setFormData] = useState({
 		email: 'joao@joao.com',
 		password: '123456',
@@ -77,6 +78,7 @@ function SingInPage(props) {
 	return (
 		<>
 			<SingInContainer>
+				<Loading />
 				<Header showSingIn />
 				<SingInContainerContent className="container">
 					<SideText>

@@ -47,7 +47,7 @@ export const SideText = styled.div`
 export const SingInBox = styled.form`
 	width: 100%;
 	margin-top: 2rem;
-	padding: 4rem 0;
+	padding: 4rem 1rem;
 
 	display: flex;
 	align-items: center;
