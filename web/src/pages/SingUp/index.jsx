@@ -23,11 +23,9 @@ function SingUpPage() {
 		password: '',
 		email: '',
 	})
-	const [isLoading, setIsLoading] = useState(false)
 
 	async function handleSubmit(event) {
 		try {
-			setIsLoading(true)
 			event.preventDefault()
 
 			const schema = Yup.object().shape({
@@ -46,12 +44,13 @@ function SingUpPage() {
 
 			await axios.post('/users', formData)
 
-			setIsLoading(false)
+			toast.success('Cadastro feito com sucesso')
 			history.push('/singin')
 		} catch (error) {
 			if (error.errors) {
 				error.errors.map((message) => toast.error(`Erro: ${message}`))
 			}
+			toast.error('Email já cadastrado')
 		}
 	}
 
@@ -80,7 +79,7 @@ function SingUpPage() {
 
 	return (
 		<SingUpContainer>
-			<Loading isLoadding={isLoading} />
+			<Loading />
 			<Header showSingUp />
 			<SingUpContainerContent className="container">
 				<SideText>
