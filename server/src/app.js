@@ -2,16 +2,16 @@ import dotenv from 'dotenv'
 import { resolve } from 'path'
 import cors from 'cors'
 
-const corsOptions = {
-	origin: function (origin, callback) {
-		const whiteList = ['http://localhost:3000']
-		if (whiteList.indexOf(origin) !== -1) {
-			callback(null, true)
-		} else {
-			callback(new Error('Not allowed by cors'))
-		}
-	},
-}
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		const whiteList = ['http://localhost:3000']
+// 		if (whiteList.indexOf(origin) !== -1) {
+// 			callback(null, true)
+// 		} else {
+// 			callback(new Error('Not allowed by cors'))
+// 		}
+// 	},
+// }
 
 dotenv.config()
 
