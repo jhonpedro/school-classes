@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useLocation } from 'react-router-dom'
 import { FaHome, FaSignInAlt, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -11,12 +11,17 @@ import LabeledIcon from '../LabeledIcon'
 function Header({ showLogin, showLogout }) {
 	const [user, setUser] = useState()
 	const auth = useSelector((state) => state.auth)
+	const location = useLocation()
 
 	useEffect(() => {
 		if (!isEmpty(auth.user)) {
 			setUser(auth.user)
 		}
 	}, [auth])
+
+	if (!isEmpty(user) && location.pathname === '/singin') {
+		return <Redirect to="/students" />
+	}
 
 	return (
 		<Container>

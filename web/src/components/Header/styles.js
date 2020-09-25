@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.nav`
+	width: 100vw;
 	background-color: var(--color-primary);
 	height: 10vh;
 	padding: 20px;
@@ -10,9 +11,9 @@ export const Container = styled.nav`
 `
 
 export const ContentSide = styled.div`
-	width: 40%;
 	display: flex;
 	justify-content: space-between;
+	width: 30%;
 
 	a {
 		display: flex;
