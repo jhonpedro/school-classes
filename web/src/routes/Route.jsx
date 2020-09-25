@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 function WrappedRoute({ children: Component, isPrivate, ...rest }) {
-	const isLoggedIn = false
+	const auth = useSelector((state) => state.auth)
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+	useEffect(() => {
+		if (auth.token) {
+			setIsLoggedIn(true)
+		}
+	}, [auth])
 
 	if (isPrivate && !isLoggedIn) {
 		return (
 			<Redirect
 				to={{
 					pathname: '/login',
-					state: { prevPath: rest.location.pahtname },
+					state: { prevPath: rest.location.pathname },
 				}}
 			/>
 		)
