@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Redirect, useLocation } from 'react-router-dom'
 import { FaHome, FaSignInAlt, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
+import * as actions from '../../store/modules/auth/actions'
+import history from '../../services/history'
 
 import { Container, ContentSide, UserSideContent } from './styles'
 import LabeledIcon from '../LabeledIcon'
@@ -12,6 +14,7 @@ function Header({ showLogin, showLogout }) {
 	const [user, setUser] = useState()
 	const auth = useSelector((state) => state.auth)
 	const location = useLocation()
+	const dispatch = useDispatch()
 
 	useEffect(() => {
 		if (!isEmpty(auth.user)) {
@@ -21,6 +24,11 @@ function Header({ showLogin, showLogout }) {
 
 	if (!isEmpty(user) && location.pathname === '/singin') {
 		return <Redirect to="/students" />
+	}
+
+	function handleLogout() {
+		dispatch(actions.loginFailure())
+		history.push('/singin')
 	}
 
 	return (
@@ -56,7 +64,11 @@ function Header({ showLogin, showLogout }) {
 				)}
 
 				{showLogout && (
-					<LabeledIcon labelName="Sair" component={<FaSignOutAlt />} />
+					<LabeledIcon
+						onClick={handleLogout}
+						labelName="Sair"
+						component={<FaSignOutAlt />}
+					/>
 				)}
 			</ContentSide>
 		</Container>

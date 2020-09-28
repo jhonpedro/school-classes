@@ -4,7 +4,7 @@ export const Container = styled.nav`
 	width: 100vw;
 	background-color: var(--color-primary);
 	height: 10vh;
-	padding: 20px;
+	padding: 2rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
