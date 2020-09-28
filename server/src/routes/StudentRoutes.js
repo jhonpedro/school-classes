@@ -12,4 +12,4 @@ router.post('/', loginRequired, studentController.store)
 router.put('/:id', loginRequired, studentController.update)
 router.delete('/:id', loginRequired, studentController.delete)
 
-export default router;
+export default router

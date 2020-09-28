@@ -11,4 +11,4 @@ router.get('/:id', userController.show)
 router.put('/:id', loginRequired, userController.update)
 router.post('/delete/:id', loginRequired, userController.delete)
 
-export default router;
+export default router

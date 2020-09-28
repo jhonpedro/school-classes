@@ -5,4 +5,4 @@ const router = new Router()
 
 router.post('/', sessionController.login)
 
-export default router;
+export default router
