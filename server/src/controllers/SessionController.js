@@ -1,5 +1,7 @@
 import JWT from 'jsonwebtoken'
 import User from '../models/User'
+import UserPhoto from '../models/UserPhoto'
+import appConfig from '../config/app'
 
 class SessionController {
 	async login(req, res) {
@@ -14,6 +16,11 @@ class SessionController {
 				where: {
 					email: reqEmail,
 				},
+				order: [[UserPhoto, 'id', 'DESC']],
+				include: {
+					model: UserPhoto,
+					attributes: ['filename'],
+				},
 			})
 
 			const isPasswordValid = user && (await user.passwordIsValid(password))
@@ -21,7 +28,7 @@ class SessionController {
 				return res.status(400).json({ error: 'user with wrong credentials' })
 			}
 
-			const { id, name, email } = user
+			const { id, name, email, Users_photos: photo } = user
 
 			const payloadJWT = {
 				id,
@@ -34,10 +41,19 @@ class SessionController {
 				process.env.JWT_SECRET,
 				{ expiresIn: process.env.JWT_EXPIRES_IN },
 				(error, token) => {
-					if (error)
+					if (error) {
 						return res.status(400).json({ error: 'error in token creation' })
+					}
 
-					return res.json({ token, user: { id, name, email } })
+					return res.json({
+						token,
+						user: {
+							id,
+							name,
+							email,
+							photo: `${appConfig.url}/images/${photo[0].filename}`,
+						},
+					})
 				}
 			)
 			return null
