@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
@@ -6,18 +6,23 @@ import { LoadingContainer, LoopCircle } from './styles'
 
 function Loading({ isLoadding }) {
 	const isLoaddingFromState = useSelector((state) => state.auth.isLoadding)
+	const [handleIfIsLoadding, setHandleIfIsLoadding] = useState(true)
 
-	const handleIfIsLoadding = isLoadding ? true : isLoaddingFromState
+	useEffect(() => {
+		setHandleIfIsLoadding(isLoadding ? true : isLoaddingFromState)
+	}, [isLoadding, isLoaddingFromState])
 
-	if (handleIfIsLoadding) {
-		return (
-			<LoadingContainer>
-				<LoopCircle />
-			</LoadingContainer>
-		)
-	}
-
-	return <></>
+	return (
+		<>
+			{handleIfIsLoadding ? (
+				<LoadingContainer>
+					<LoopCircle />
+				</LoadingContainer>
+			) : (
+				<></>
+			)}
+		</>
+	)
 }
 
 Loading.defaultProps = {
