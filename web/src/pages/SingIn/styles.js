@@ -25,6 +25,7 @@ export const SingInContainerContent = styled.main`
 	justify-content: center;
 	flex-direction: column;
 	margin: 0 auto;
+	padding: 0 1.5rem;
 
 	animation: ${appearFromLeft} 1s;
 

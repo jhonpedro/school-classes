@@ -41,13 +41,17 @@ export const Content = styled.section`
 
 export const About = styled.article`
 	font-size: 2rem;
-	font-family: Lobster;
 	letter-spacing: 0.09rem;
 	margin-bottom: 2.5rem;
+
+	p {
+		font-family: Poppins;
+	}
 
 	.colorful {
 		color: var(--color-primary);
 		font-size: 3.5rem;
+		font-family: Lobster;
 		margin-bottom: 2.5rem;
 	}
 
@@ -60,10 +64,10 @@ export const About = styled.article`
 `
 
 export const Redirect = styled.button`
-	width: 100%;
+	width: 60%;
 	font-family: Poppins;
-	font-size: 2rem;
-	padding: 2.5rem;
+	font-size: 1.5rem;
+	padding: 2rem;
 	border: 0;
 	border-radius: 0.7rem;
 	background-color: var(--color-primary);
