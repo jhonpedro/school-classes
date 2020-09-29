@@ -29,6 +29,7 @@ export default createGlobalStyle`
 
 	html, body {
 		height: 100vh;
+		position: fixed;
 	}
 
 	a {
