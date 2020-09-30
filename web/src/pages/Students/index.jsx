@@ -1,26 +1,44 @@
 import React, { useEffect, useState } from 'react'
+import { FaUserPlus } from 'react-icons/fa'
 import axios from '../../services/axios'
+import history from '../../services/history'
 
 import Header from '../../components/Header'
 import Student from '../../components/Student'
-
-import { StudentsContainer } from './styles'
+import Button from '../../components/Button'
+import LabeledIcon from '../../components/LabeledIcon'
 import Loading from '../../components/Loading'
+
+import { StudentsContainer, ButtonsContainer } from './styles'
 
 function StudentsComponent() {
 	const [students, setStudents] = useState()
 	const [isLoadding, setIsLoadding] = useState(true)
+
 	useEffect(() => {
 		axios.get('/students').then((studentsFromDB) => {
 			setStudents(studentsFromDB.data)
 			setIsLoadding(false)
 		})
 	}, [])
+
+	function handleCreateStudent() {
+		history.push('/students/new')
+	}
+
 	return (
 		<>
 			<Loading isLoadding={isLoadding} />
 			<Header showLogout />
 			<StudentsContainer>
+				<ButtonsContainer>
+					<Button onClick={handleCreateStudent}>
+						<LabeledIcon
+							labelName="Criar estudante"
+							component={<FaUserPlus />}
+						/>
+					</Button>
+				</ButtonsContainer>
 				{students &&
 					students.map((student) => {
 						const photo =

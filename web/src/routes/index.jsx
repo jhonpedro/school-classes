@@ -8,6 +8,7 @@ import Landing from '../pages/Landing'
 import Page404 from '../pages/Page404'
 import Students from '../pages/Students'
 import Student from '../pages/Student'
+import NewStudent from '../pages/NewStudent'
 
 function Routes() {
 	return (
@@ -24,12 +25,16 @@ function Routes() {
 				<SingUp />
 			</Route>
 
-			<Route path="/students" isPrivate>
+			<Route path="/students" exact isPrivate>
 				<Students />
 			</Route>
 
 			<Route path="/student/:id" isPrivate>
 				<Student />
+			</Route>
+
+			<Route path="/students/new" isPrivate>
+				<NewStudent />
 			</Route>
 
 			<Route path="*">
