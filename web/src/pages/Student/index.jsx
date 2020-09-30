@@ -48,13 +48,12 @@ function Student() {
 		event.preventDefault()
 
 		const studentDataToEdit = new FormData()
-
 		studentDataToEdit.append('photo', studentToEdit.image)
 		studentDataToEdit.append('id', studentToEdit.id)
+
 		try {
-			console.log({ ...studentToEdit })
 			await axios.put(`students/${student.id}`, { ...studentToEdit })
-			if (studentDataToEdit.image) {
+			if (studentToEdit.image) {
 				await axios.post(`/photos/student/`, studentDataToEdit, {
 					headers: {
 						'Content-type': 'multipart/formdata',
