@@ -1,12 +1,15 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+import * as actions from '../store/modules/auth/actions'
 
 function WrappedRoute({ children: Component, isPrivate, ...rest }) {
+	const dispatch = useDispatch()
 	const auth = useSelector((state) => state.auth)
 
 	if (isPrivate && !auth.token) {
+		dispatch(actions.loginFailure())
 		return (
 			<Redirect
 				to={{
