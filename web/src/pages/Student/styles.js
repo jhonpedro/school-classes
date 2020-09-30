@@ -28,7 +28,7 @@ export const UserContent = styled.article`
 		`}
 `
 
-export const InputContainer = styled.div`
+export const ButtonContainer = styled.div`
 	width: 70%;
 	padding: 2rem 0;
 

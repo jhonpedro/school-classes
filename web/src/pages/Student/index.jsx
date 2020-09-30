@@ -16,7 +16,7 @@ import Input from '../../components/Input'
 import {
 	StudentContaier,
 	UserContent,
-	InputContainer,
+	ButtonContainer,
 	UserHeader,
 	UserPhoto,
 	UserHeaderEdit,
@@ -52,12 +52,15 @@ function Student() {
 		studentDataToEdit.append('photo', studentToEdit.image)
 		studentDataToEdit.append('id', studentToEdit.id)
 		try {
-			await axios.post(`/photos/student/`, studentDataToEdit, {
-				headers: {
-					'Content-type': 'multipart/formdata',
-				},
-			})
-			await axios.put(`students/${student.id}`, { ...student })
+			console.log({ ...studentToEdit })
+			await axios.put(`students/${student.id}`, { ...studentToEdit })
+			if (studentDataToEdit.image) {
+				await axios.post(`/photos/student/`, studentDataToEdit, {
+					headers: {
+						'Content-type': 'multipart/formdata',
+					},
+				})
+			}
 			setShowToEdit(false)
 		} catch (error) {
 			toast.error('Permisão negada, tente novamente!')
@@ -164,7 +167,7 @@ function Student() {
 								</UserHeader>
 							)}
 						</UserContent>
-						<InputContainer>
+						<ButtonContainer>
 							{showToEdit ? (
 								<>
 									<Button onClick={handleEdit}>Cancelar</Button>
@@ -176,7 +179,7 @@ function Student() {
 									<Button onClick={handleDelete}>Excluir</Button>
 								</>
 							)}
-						</InputContainer>
+						</ButtonContainer>
 					</>
 				) : (
 					<Loading isLoadding={isLoadding} />
