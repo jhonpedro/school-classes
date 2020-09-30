@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Redirect, useLocation } from 'react-router-dom'
-import { FaHome, FaSignInAlt, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
+import {
+	FaChevronLeft,
+	FaSignInAlt,
+	FaSignOutAlt,
+	FaUserCircle,
+} from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
@@ -31,12 +36,18 @@ function Header({ showLogin, showLogout }) {
 		history.push('/singin')
 	}
 
+	function handleGoBack() {
+		history.goBack()
+	}
+
 	return (
 		<Container>
 			<ContentSide>
-				<Link to="/">
-					<LabeledIcon labelName="Home" component={<FaHome />} />
-				</Link>
+				<LabeledIcon
+					onClick={handleGoBack}
+					labelName="Voltar"
+					component={<FaChevronLeft />}
+				/>
 			</ContentSide>
 
 			<ContentSide>
