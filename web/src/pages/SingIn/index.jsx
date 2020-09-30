@@ -24,8 +24,8 @@ function SingInPage(props) {
 	const dispatch = useDispatch()
 	const prevPath = get(props, 'location.state.prevPath', '/students')
 	const [formData, setFormData] = useState({
-		email: 'joao@joao.com',
-		password: '123456',
+		email: '',
+		password: '',
 	})
 
 	async function handleSubmit(event) {
