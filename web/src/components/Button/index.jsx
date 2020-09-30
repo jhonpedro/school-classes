@@ -6,14 +6,16 @@ import { Button } from './styles'
 function ButtonComponent({ children, ...rest }) {
 	return (
 		// eslint-disable-next-line
-		<Button {...rest} >
-			{children}
-		</Button>
+		<Button {...rest}>{children}</Button>
 	)
 }
 
 ButtonComponent.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.string,
+		PropTypes.element,
+	]).isRequired,
 }
 
 export default ButtonComponent
