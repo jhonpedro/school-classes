@@ -5,7 +5,7 @@ export const StudentContainer = styled.section`
 	max-width: 50rem;
 
 	border-radius: 1rem;
-	padding: 2rem;
+	padding: 2rem 0 0;
 	font-size: 1.2rem;
 `
 

@@ -14,6 +14,7 @@ export const ContentSide = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 30%;
+	font-size: 2.5rem;
 
 	a {
 		display: flex;

@@ -5,7 +5,6 @@ export const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	font-size: 2.5rem;
 	color: var(--color-text-white);
 	transition: color 0.2s;
 

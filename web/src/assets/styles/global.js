@@ -20,6 +20,7 @@ export default createGlobalStyle`
 		padding: 0;
 		box-sizing: border-box;
 		outline: none;
+		font-family: Poppins;
 	}
 
 	body {
@@ -36,9 +37,6 @@ export default createGlobalStyle`
 		text-decoration: none;
 	}
 
-	input {
-		font-family: Poppins;
-	}
 
 	.container {
 		width: 90vw;
