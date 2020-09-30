@@ -5,16 +5,20 @@ import Header from '../../components/Header'
 import Student from '../../components/Student'
 
 import { StudentsContainer } from './styles'
+import Loading from '../../components/Loading'
 
 function StudentsComponent() {
 	const [students, setStudents] = useState()
+	const [isLoadding, setIsLoadding] = useState(true)
 	useEffect(() => {
 		axios.get('/students').then((studentsFromDB) => {
 			setStudents(studentsFromDB.data)
+			setIsLoadding(false)
 		})
 	}, [])
 	return (
 		<>
+			<Loading isLoadding={isLoadding} />
 			<Header showLogout />
 			<StudentsContainer>
 				{students &&
