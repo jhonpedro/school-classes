@@ -36,6 +36,10 @@ function Header({ showLogin, showLogout }) {
 		history.push('/singin')
 	}
 
+	function handleSingIn() {
+		history.push('/singin')
+	}
+
 	function handleGoBack() {
 		history.goBack()
 	}
@@ -51,11 +55,6 @@ function Header({ showLogin, showLogout }) {
 			</ContentSide>
 
 			<ContentSide>
-				{showLogin && (
-					<Link to="/singin">
-						<LabeledIcon labelName="Entrar" component={<FaSignInAlt />} />
-					</Link>
-				)}
 				{user !== undefined && (
 					<Link to={`/users/${user.id}`}>
 						<UserSideContent>
@@ -72,6 +71,14 @@ function Header({ showLogin, showLogout }) {
 							)}
 						</UserSideContent>
 					</Link>
+				)}
+
+				{showLogin && (
+					<LabeledIcon
+						onClick={handleSingIn}
+						labelName="Entrar"
+						component={<FaSignInAlt />}
+					/>
 				)}
 
 				{showLogout && (
