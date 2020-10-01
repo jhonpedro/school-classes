@@ -9,6 +9,7 @@ import Page404 from '../pages/Page404'
 import Students from '../pages/Students'
 import Student from '../pages/Student'
 import NewStudent from '../pages/NewStudent'
+import User from '../pages/User'
 
 function Routes() {
 	return (
@@ -35,6 +36,10 @@ function Routes() {
 
 			<Route path="/students/new" isPrivate>
 				<NewStudent />
+			</Route>
+
+			<Route path="/users/:id" isPrivate>
+				<User />
 			</Route>
 
 			<Route path="*">
