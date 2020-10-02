@@ -14,8 +14,8 @@ function Landing() {
 				<About>
 					<p className="colorful">Olá, bem vindo a nossa plataforma!</p>
 					<p>
-						Essa é uma plataforma utlizada para a criaçao de turmas, simulando
-						uma escola!
+						Essa é uma plataforma utlizada para a criaçao de estudantes,
+						simulando uma escola!
 					</p>
 				</About>
 				<Redirect onClick={handleRedirectToLogin}>Quero participar!</Redirect>
