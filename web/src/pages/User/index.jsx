@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FaUserCircle, FaCameraRetro } from 'react-icons/fa'
 import * as Yup from 'yup'
 import { toast } from 'react-toastify'
 import axios from '../../services/axios'
+import * as actions from '../../store/modules/auth/actions'
 
 import Header from '../../components/Header'
 import Button from '../../components/Button'
@@ -30,6 +31,8 @@ function User() {
 		photo: '',
 	})
 	const [showToEdit, setShowToEdit] = useState(false)
+	const dispatch = useDispatch()
+
 	// eslint-disable-next-line
 	async function handleSubmit(event) {
 		event.preventDefault()
@@ -41,11 +44,6 @@ function User() {
 			password: Yup.string()
 				.min(6, 'Senha com no mínimo 6 letras')
 				.required('Senha é obrigatória'),
-			newPassword: Yup.string().min(6, 'Senha nova com no mínimo 6 letras'),
-			confirmNewPassword: Yup.string().min(
-				6,
-				'Confirmação de senha com no mínimo 6 letras'
-			),
 		})
 		try {
 			await schema.validate(userToEdit, { abortEarly: false })
@@ -70,6 +68,10 @@ function User() {
 					},
 				})
 			}
+
+			toast.success('Usuário alterado com sucesso')
+			toast.success('Faça o login novamente')
+			dispatch(actions.loginFailure())
 		} catch (error) {
 			if (error.errors) {
 				error.errors.map((erro) => toast.error(erro))
@@ -132,26 +134,26 @@ function User() {
 							</UserPhotoEdit>
 							<Input
 								placeholder="Nome"
-								value={user.name}
+								value={userToEdit.name}
 								onChange={handleChangeName}
 							/>
 							<Input placeholder="Email" value={user.email} disabled />
 							<Input
 								type="password"
 								placeholder="Senha antiga"
-								value={user.lastPassword}
+								value={userToEdit.lastPassword}
 								onChange={handleChangePassword}
 							/>
 							<Input
 								type="password"
 								placeholder="Nova senha"
-								value={user.newPassword}
+								value={userToEdit.newPassword}
 								onChange={handleChangeNewPassword}
 							/>
 							<Input
 								type="password"
 								placeholder="Repita a nova senha"
-								value={user.confirmNewPassword}
+								value={userToEdit.confirmNewPassword}
 								onChange={handleChangeConfirmPassword}
 							/>
 						</UserAnimation>
