@@ -102,7 +102,7 @@ function SingInPage(props) {
 							<Button type="button" onClick={handleSingUp}>
 								Cadastre-se
 							</Button>
-							<Button type="submit">SingIn</Button>
+							<Button type="submit">Entrar</Button>
 						</SingInBoxButtons>
 					</SingInBox>
 				</SingInContainerContent>
