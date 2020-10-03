@@ -5,7 +5,7 @@ import UserPhoto from '../models/UserPhoto'
 
 const upload = multer(multerConfig).single('photo')
 
-class HomeController {
+class PhotoController {
 	storeStudent(req, res) {
 		return upload(req, res, async (error) => {
 			if (error) {
@@ -40,7 +40,6 @@ class HomeController {
 				const { originalname, filename } = req.file
 				const { id } = req.body
 
-				console.log(typeof id)
 				const photo = await UserPhoto.create({
 					originalname,
 					filename,
@@ -56,4 +55,4 @@ class HomeController {
 	}
 }
 
-export default new HomeController()
+export default new PhotoController()
