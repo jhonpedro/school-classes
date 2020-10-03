@@ -1,7 +1,3 @@
-<h1 align="center">
-	<img src="../.github/school-data.png">
-</h1>
-
 <h3 align="center">
   School data - Visualize your students wherever you are
 </h3>
@@ -33,22 +29,21 @@
 
 ## 👨🏻‍💻 About the project
 
-- <p style="color: red;">Aplication developed just for learning. Understanding concepts about migrations with Sequelize and multipart/formdata handling</strong></p>
+- <p style="color: red;">Aplication developed only for learning porpouses. Understanding concepts about migrations with Sequelize and multipart/formdata handling</strong></p>
 
-To see the **API**, click here: [school-data API](https://github.com/jhonpedro/school-data/tree/master/server)</br>
+To see the **Web client**, click here: [school-data WEB](https://github.com/jhonpedro/school-data/tree/master/web)</br>
 
 ## 🚀 Technologies
 
 Technologies that I used to develop this api
 
-- [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [Redux-saga](https://redux-saga.js.org/)
-- [React router dom](https://reactrouter.com/)
-- [React toastify](https://www.npmjs.com/package/react-toastify)
-- [Styled components](https://styled-components.com/)
-- [Yup](https://github.com/jquense/yup)
-- [Axios](https://github.com/axios/axios)
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [Sequelize](https://sequelize.org/)
+- [cors](https://github.com/expressjs/cors)
+- [Multer](https://www.npmjs.com/package/multer)
+- [JWT](https://jwt.io/)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ## 💻 Getting started
 
@@ -58,6 +53,7 @@ See below how you can start using the project
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- One instance of [PostgreSQL](https://www.postgresql.org/)
 
 **Clone the project and access the folder**
 
@@ -69,13 +65,19 @@ $ git clone https://github.com/jhonpedro/school-data && cd school-data
 
 ```bash
 # Install the dependencies
-$ cd /web
+$ cd /backend
 $ yarn
 
-# To finish, run the web client service
-$ yarn start
+# You need to create a table in your Postgre called "school"
+# Now we'll need to run our migrations
+$ (yarn or npx) sequelize db:migrate
 
-# Well done, now it'll open in your browser
+# To finish, run the api service
+$ yarn dev
+
+# You can, run the app in a production build with
+$ yarn build; yarn start
+# Well done, API is started!
 ```
 
 > I'm using this template [here](https://github.com/EliasGcf/readme-template/tree/master/templates)
