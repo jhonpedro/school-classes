@@ -1,7 +1,6 @@
 import JWT from 'jsonwebtoken'
 import User from '../models/User'
 import UserPhoto from '../models/UserPhoto'
-import appConfig from '../config/app'
 
 class SessionController {
 	async login(req, res) {
@@ -19,7 +18,7 @@ class SessionController {
 				order: [[UserPhoto, 'id', 'DESC']],
 				include: {
 					model: UserPhoto,
-					attributes: ['filename'],
+					attributes: ['filename', 'link'],
 				},
 			})
 
@@ -28,7 +27,8 @@ class SessionController {
 				return res.status(400).json({ error: 'user with wrong credentials' })
 			}
 
-			const { id, name, email, Users_photos: photo } = user
+			const { id, name, email, Users_photos: userPhoto } = user
+			const photo = userPhoto[0] ? userPhoto[0].link : ''
 
 			const payloadJWT = {
 				id,
@@ -51,12 +51,7 @@ class SessionController {
 							id,
 							name,
 							email,
-							photo: function getPhoto() {
-								if (photo[0]) {
-									return `${appConfig.url}/images/${photo[0].filename}`
-								}
-								return null
-							},
+							photo,
 						},
 					})
 				}
