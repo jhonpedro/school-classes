@@ -33,6 +33,9 @@ function NewStudent() {
 			name: Yup.string()
 				.min(3, 'Nome com no mínimo 3 caracteres')
 				.required('Nome obrigatório'),
+			lastName: Yup.string()
+				.min(3, 'Nome com no mínimo 3 caracteres')
+				.required('Sobrenome obrigatório'),
 			email: Yup.string()
 				.email('Seu e-mail é inválido')
 				.required('E-mail obrigatório'),
