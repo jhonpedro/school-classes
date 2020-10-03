@@ -42,16 +42,21 @@ class SessionController {
 				{ expiresIn: process.env.JWT_EXPIRES_IN },
 				(error, token) => {
 					if (error) {
+						console.log(error)
 						return res.status(400).json({ error: 'error in token creation' })
 					}
-
 					return res.json({
 						token,
 						user: {
 							id,
 							name,
 							email,
-							photo: `${appConfig.url}/images/${photo[0].filename}`,
+							photo: function getPhoto() {
+								if (photo[0]) {
+									return `${appConfig.url}/images/${photo[0].filename}`
+								}
+								return null
+							},
 						},
 					})
 				}
