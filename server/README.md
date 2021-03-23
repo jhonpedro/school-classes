@@ -68,7 +68,8 @@ $ git clone https://github.com/jhonpedro/school-data && cd school-data
 $ cd /backend
 $ yarn
 
-# You need to create a table in your Postgre called "school"
+# You need to create a database in your Postgres called "school"
+# I'm not shure if sequelize create it for you
 # Now we'll need to run our migrations
 $ (yarn or npx) sequelize db:migrate
 
